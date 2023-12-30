@@ -10,6 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RatingFoodDTO {
+//    private Integer id;
     @JsonProperty("food_id")
     private Integer foodId;
     @JsonProperty("user_id")
@@ -17,4 +18,8 @@ public class RatingFoodDTO {
     private String content;
     @JsonProperty("rate_point")
     private Integer ratePoint;
+//    @JsonProperty("updated_at")
+//    private String updatedAt;
+//    @JsonProperty("created_at")
+//    private String createdAt;
 }

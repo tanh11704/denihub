@@ -10,6 +10,11 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoleDTO {
+//    private Integer id;
     @JsonProperty("role_name")
     private String roleName;
+//    @JsonProperty("updated_at")
+//    private String updatedAt;
+//    @JsonProperty("created_at")
+//    private String createdAt;
 }

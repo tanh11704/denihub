@@ -10,6 +10,11 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CartDTO {
+//    private Integer id;
     @JsonProperty("user_id")
     private Integer userId;
+//    @JsonProperty("created_at")
+//    private String createdAt;
+//    @JsonProperty("updated_at")
+//    private String updatedAt;
 }

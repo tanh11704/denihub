@@ -10,6 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDTO {
+//    private Integer id;
     @JsonProperty("user_id")
     private Integer userId;
     private String fullname;
@@ -19,4 +20,8 @@ public class OrderDTO {
     private String note;
     private String status;
     private Float total;
+//    @JsonProperty("updated_at")
+//    private String updatedAt;
+//    @JsonProperty("created_at")
+//    private String createdAt;
 }

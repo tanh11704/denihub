@@ -10,6 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDTO {
+//    private Integer id;
     private String email;
     private String password;
     private String fullName;
@@ -21,4 +22,8 @@ public class UserDTO {
     private boolean isActive;
     @JsonProperty("role_id")
     private Integer role;
+//    @JsonProperty("updated_at")
+//    private String updatedAt;
+//    @JsonProperty("created_at")
+//    private String createdAt;
 }

@@ -10,8 +10,13 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PromoSaved {
+//    private Integer id;
     @JsonProperty("user_id")
     private Integer userId;
     @JsonProperty("promo_id")
     private Integer promoId;
+//    @JsonProperty("updated_at")
+//    private String updatedAt;
+//    @JsonProperty("created_at")
+//    private String createdAt;
 }

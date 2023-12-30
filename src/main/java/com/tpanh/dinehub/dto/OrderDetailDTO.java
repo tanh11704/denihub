@@ -10,6 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDetailDTO {
+//    private Integer id;
     @JsonProperty("order_id")
     private Integer orderId;
     @JsonProperty("food_id")
@@ -17,4 +18,8 @@ public class OrderDetailDTO {
     private Integer quantity;
     @JsonProperty("total_money")
     private Float totalMoney;
+//    @JsonProperty("updated_at")
+//    private String updatedAt;
+//    @JsonProperty("created_at")
+//    private String createdAt;
 }
