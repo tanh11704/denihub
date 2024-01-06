@@ -7,6 +7,8 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
+@Entity
+@Table(name = "carousels")
 public class Carousel extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
