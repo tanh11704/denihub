@@ -1,37 +1,32 @@
 package com.tpanh.dinehub.entity;
 
+import com.tpanh.dinehub.entity.key.KeyRatingFood;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
-
-@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "rating_food")
-public class RatingFood extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+@Table(name = "rating_foods")
+public class RatingFood {
+    @EmbeddedId
+    private KeyRatingFood id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "food_id", nullable = false)
-    private Food food;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    @Lob
     @Column(name = "content")
     private String content;
 
     @Column(name = "rate_point", nullable = false)
-    private Byte ratePoint;
+    private Integer ratePoint;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "food_id", nullable = false, insertable = false, updatable = false)
+    private Food food;
 
 }

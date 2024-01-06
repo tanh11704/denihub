@@ -1,34 +1,33 @@
 package com.tpanh.dinehub.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Column;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import lombok.*;
 
-import java.sql.Timestamp;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@MappedSuperclass
 public class BaseEntity {
-    @JsonProperty("updated_at")
-    private Date updatedAt;
-    @JsonProperty("created_at")
-    private Date createdAt;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
     @PrePersist
-    void onCreate() {
-        this.setCreatedAt(new Timestamp((new Date()).getTime()));
-        this.setUpdatedAt(new Timestamp((new Date()).getTime()));
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
     }
 
     @PreUpdate
-    void onPersist() {
-        this.setUpdatedAt(new Timestamp((new Date()).getTime()));
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 }

@@ -3,11 +3,8 @@ package com.tpanh.dinehub.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
-@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,17 +12,16 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "carts")
-public class Cart extends BaseEntity {
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "cart")
-    private Set<CartItem> cartItems = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
+    private List<CartItem> cartItems;
 
 }

@@ -3,11 +3,8 @@ package com.tpanh.dinehub.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
-@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,51 +12,43 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "email", nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password", nullable = false)
+    @Column(nullable = false)
     private String password;
 
-    @Column(name = "fullname")
     private String fullname;
 
     @Column(name = "phone_number")
     private Integer phoneNumber;
 
-    @Lob
-    @Column(name = "avatar")
     private String avatar;
 
-    @Column(name = "address")
     private String address;
 
-    @Column(name = "is_active", nullable = false)
-    private Byte isActive;
+    @Column(name = "is_delete", nullable = false)
+    private Boolean isDelete = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Cart> carts = new LinkedHashSet<>();
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Cart cart;
 
-    @OneToMany(mappedBy = "user")
-    private Set<FavoriteFood> favoriteFoods = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<PromoSaved> promoSaveds;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Order> orders = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<FavoriteFood> favoriteFoods;
 
-    @OneToMany(mappedBy = "user")
-    private Set<PromoSaved> promoSaveds = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "user")
-    private Set<RatingFood> ratingFoods = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<RatingFood> ratingFoods;
 
 }

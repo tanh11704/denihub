@@ -3,13 +3,10 @@ package com.tpanh.dinehub.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.Date;
+import java.util.List;
 
-@Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -19,19 +16,17 @@ import java.util.Set;
 public class Promo extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "start_date", nullable = false)
-    private LocalDate startDate;
+    @Column(nullable = false, unique = true)
+    private String code;
 
     @Column(name = "end_date", nullable = false)
-    private LocalDate endDate;
+    private Date endDate;
 
-    @Column(name = "percent", nullable = false)
+    @Column(nullable = false)
     private Integer percent;
 
-    @OneToMany(mappedBy = "promo")
-    private Set<PromoSaved> promoSaveds = new LinkedHashSet<>();
-
+    @OneToMany(mappedBy = "promo", cascade = CascadeType.ALL)
+    private List<PromoSaved> promoSaveds;
 }

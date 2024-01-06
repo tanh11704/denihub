@@ -5,11 +5,8 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
-@Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -19,34 +16,25 @@ import java.util.Set;
 public class Order extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    @Column(name = "fullname", nullable = false)
+    @Column(nullable = false)
     private String fullname;
 
     @Column(name = "phone_number", nullable = false, length = 10)
     private String phoneNumber;
 
-    @Column(name = "address", nullable = false)
+    @Column(nullable = false)
     private String address;
 
-    @Lob
-    @Column(name = "note")
     private String note;
 
-    @Lob
-    @Column(name = "status", nullable = false)
     private String status;
 
-    @Column(name = "total", nullable = false, precision = 10)
-    private BigDecimal total;
+    @Column(nullable = false, precision = 10)
+    private Float total;
 
-    @OneToMany(mappedBy = "oder")
-    private Set<OrderDetail> orderDetails = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderDetail> orderDetails;
 
 }

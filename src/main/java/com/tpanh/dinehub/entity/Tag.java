@@ -5,22 +5,21 @@ import lombok.*;
 
 import java.util.List;
 
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "tags")
+public class Tag extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "role_name", nullable = false, unique = true)
-    private String roleName;
+    @Column(nullable = false, unique = true)
+    private String name;
 
-    @OneToMany(mappedBy = "role")
-    private List<User> users;
+    @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FoodTag> foodTags;
 
 }
