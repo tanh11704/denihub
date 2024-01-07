@@ -39,16 +39,16 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Cart cart;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<PromoSaved> promoSaveds;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<FavoriteFood> favoriteFoods;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<RatingFood> ratingFoods;
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+//    private Cart cart;
+//
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<PromoSaved> promoSaveds;
+//
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<FavoriteFood> favoriteFoods;
+//
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<RatingFood> ratingFoods;
 
 }
