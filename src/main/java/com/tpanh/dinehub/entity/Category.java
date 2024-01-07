@@ -1,5 +1,6 @@
 package com.tpanh.dinehub.entity;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "categories")
+@JsonPropertyOrder({"id", "name", "image", "foods", "createdAt", "updatedAt"})
 public class Category extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +22,9 @@ public class Category extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(nullable = false)
     private String image;
 
-    @OneToMany(mappedBy = "category")
-    private List<Food> foods;
+//    @OneToMany(mappedBy = "category")
+//    private List<Food> foods;
 
 }
