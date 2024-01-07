@@ -5,6 +5,7 @@ import com.tpanh.dinehub.entity.Category;
 import com.tpanh.dinehub.exception.DataNotFoundException;
 import com.tpanh.dinehub.reponsitory.CategoryRepository;
 import com.tpanh.dinehub.service.impl.ICategoryService;
+import com.tpanh.dinehub.service.impl.IFilesStorageService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,10 @@ public class CategoryService implements ICategoryService {
 
     @Autowired
     CategoryRepository categoryRepository;
-
     @Autowired
     ModelMapper modelMapper;
+    @Autowired
+    IFilesStorageService filesStorageService;
 
     @Override
     public List<Category> getAllCategories() {
@@ -69,28 +71,12 @@ public class CategoryService implements ICategoryService {
 
         if (existingCategory.getImage() != null) {
             Path existingImagePath = Paths.get(existingCategory.getImage());
-            try {
-                Files.deleteIfExists(existingImagePath);
-            } catch (IOException e) {
-                throw new IOException("Could not delete existing image file: " + existingCategory.getImage(), e);
-            }
+            Files.deleteIfExists(existingImagePath);
         }
 
-        String originalFilename = file.getOriginalFilename();
-        String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
-        String newFilename = UUID.randomUUID().toString() + extension;
+        String filePath = filesStorageService.save(file, "categories");
 
-        Path dirPath = Paths.get("uploads/categories");
-        Path filePath = dirPath.resolve(newFilename);
-
-        try {
-            Files.createDirectories(dirPath); // This line ensures the directory exists
-            Files.copy(file.getInputStream(), filePath);
-        } catch (IOException e) {
-            throw new IOException("Could not save image file: " + newFilename, e);
-        }
-
-        existingCategory.setImage(filePath.toString());
+        existingCategory.setImage(filePath);
         categoryRepository.save(existingCategory);
 
         return existingCategory;
