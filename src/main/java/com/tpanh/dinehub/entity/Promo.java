@@ -1,5 +1,6 @@
 package com.tpanh.dinehub.entity;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "promos")
+@JsonPropertyOrder({"id", "code", "endDate", "percent", "created_at", "updated_at"})
 public class Promo extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +29,6 @@ public class Promo extends BaseEntity {
     @Column(nullable = false)
     private Integer percent;
 
-    @OneToMany(mappedBy = "promo", cascade = CascadeType.ALL)
-    private List<PromoSaved> promoSaveds;
+//    @OneToMany(mappedBy = "promo", cascade = CascadeType.ALL)
+//    private List<PromoSaved> promoSaveds;
 }
