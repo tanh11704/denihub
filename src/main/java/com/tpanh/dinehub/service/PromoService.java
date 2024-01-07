@@ -45,11 +45,8 @@ public class PromoService implements IPromoService {
     public Promo updatePromo(Integer id, PromoDTO promo) throws Exception {
         Promo existingPromo = promoRepository.findById(id)
                 .orElseThrow(() -> new DataNotFoundException("Promo not found"));
-        if (existingPromo != null) {
-            modelMapper.map(promo, existingPromo);
-            return promoRepository.save(existingPromo);
-        }
-        return null;
+        modelMapper.map(promo, existingPromo);
+        return promoRepository.save(existingPromo);
     }
 
     @Override

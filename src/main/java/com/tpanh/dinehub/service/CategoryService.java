@@ -4,12 +4,10 @@ import com.tpanh.dinehub.dto.CategoryDTO;
 import com.tpanh.dinehub.entity.Category;
 import com.tpanh.dinehub.exception.DataNotFoundException;
 import com.tpanh.dinehub.reponsitory.CategoryRepository;
-import com.tpanh.dinehub.response.CategoryResponse;
 import com.tpanh.dinehub.service.impl.ICategoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

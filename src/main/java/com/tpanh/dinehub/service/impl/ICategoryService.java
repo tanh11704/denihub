@@ -2,8 +2,6 @@ package com.tpanh.dinehub.service.impl;
 
 import com.tpanh.dinehub.dto.CategoryDTO;
 import com.tpanh.dinehub.entity.Category;
-import com.tpanh.dinehub.exception.DataNotFoundException;
-import com.tpanh.dinehub.response.CategoryResponse;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
