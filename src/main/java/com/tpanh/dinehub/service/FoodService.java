@@ -47,9 +47,10 @@ public class FoodService implements IFoodService {
 
     @Override
     public Food createFood(FoodDTO food) {
+        modelMapper.typeMap(FoodDTO.class, Food.class)
+                .addMappings(mapper -> mapper.skip(Food::setId));
         Food newFood = new Food();
         modelMapper.map(food, newFood);
-        newFood.setId(null);
         return foodRepository.save(newFood);
     }
 

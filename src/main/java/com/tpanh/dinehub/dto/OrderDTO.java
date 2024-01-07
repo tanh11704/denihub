@@ -22,4 +22,6 @@ public class OrderDTO {
 
     private String note;
 
+    private Double total;
+
 }

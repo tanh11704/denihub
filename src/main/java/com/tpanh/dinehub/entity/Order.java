@@ -1,5 +1,6 @@
 package com.tpanh.dinehub.entity;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "orders")
+@JsonPropertyOrder({"id", "fullname", "phoneNumber", "address", "note", "total", "status", "created_at", "updated_at"})
 public class Order extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,10 +33,14 @@ public class Order extends BaseEntity {
 
     private String status;
 
-    @Column(nullable = false, precision = 10)
-    private Float total;
+    @Column(precision = 10, scale = 2)
+    private BigDecimal total;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderDetail> orderDetails;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+//    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+//    private List<OrderDetail> orderDetails;
 
 }
