@@ -28,7 +28,7 @@ public class CarouselController {
         return ResponseEntity.ok(carousel);
     }
 
-    @PostMapping
+    @PostMapping(consumes = {"multipart/form-data"})
     public ResponseEntity<Carousel> createCarousel(@ModelAttribute("file") MultipartFile file) throws Exception {
         Carousel newCarousel = carouselService.createCarousel(file);
         return ResponseEntity.ok(newCarousel);

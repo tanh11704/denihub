@@ -12,11 +12,12 @@ import lombok.*;
 @NoArgsConstructor
 public class FoodDTO {
     private String name;
-    private String image;
-    private Float price;
+    private Double price;
     private String description;
     private Integer calories;
     private Integer weight;
+    @JsonProperty("food_type")
+    private String foodType;
     @JsonProperty("category_id")
     private Integer categoryId;
 }

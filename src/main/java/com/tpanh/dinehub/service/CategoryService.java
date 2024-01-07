@@ -51,11 +51,8 @@ public class CategoryService implements ICategoryService {
     public Category updateCategory(Integer id, CategoryDTO category) throws Exception {
         Category existingCategory = categoryRepository.findById(id)
                 .orElseThrow(() -> new DataNotFoundException("Category not found"));
-        if (existingCategory != null) {
-            existingCategory.setName(category.getName());
-            return categoryRepository.save(existingCategory);
-        }
-        return null;
+        existingCategory.setName(category.getName());
+        return categoryRepository.save(existingCategory);
     }
 
     @Override

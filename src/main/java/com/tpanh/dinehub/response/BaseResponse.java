@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
-@Builder
 @Getter
 @Setter
 @AllArgsConstructor

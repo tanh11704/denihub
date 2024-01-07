@@ -1,5 +1,7 @@
 package com.tpanh.dinehub.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,11 +22,10 @@ public class Food extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
     private String image;
 
     @Column(nullable = false, precision = 10)
-    private Float price;
+    private Double price;
 
     private String description;
 
@@ -34,23 +35,26 @@ public class Food extends BaseEntity {
     @Column(nullable = false)
     private Integer weight;
 
+    @Column(name = "food_type")
+    private String foodType;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
-    private List<CartItem> cartItems;
+//    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
+//    private List<CartItem> cartItems;
 
-    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
-    private List<FavoriteFood> favoriteFoods;
+//    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
+//    private List<FavoriteFood> favoriteFoods;
 
-    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
-    private List<OrderDetail> orderDetails;
+//    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
+//    private List<OrderDetail> orderDetails;
 
-    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
-    private List<FoodTag> foodTags;
+//    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
+//    private List<FoodTag> foodTags;
 
-    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
-    private List<RatingFood> ratingFoods;
+//    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
+//    private List<RatingFood> ratingFoods;
 
 }
