@@ -1,21 +1,25 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/dinehub?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/dinehub
     username: root
     password:
     jpa:
       hibernate:
-        ddl-auto: create
-      show-sql: true
-      generate-ddl: true
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        ddl-auto: update
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
 
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
 uploads:
   root: uploads
+
+jwt:
+  secret: daf66e01593f61a15b857cf433aae03a005812b31234e149036bcc8dee755dbb
+  expiration: 604800000

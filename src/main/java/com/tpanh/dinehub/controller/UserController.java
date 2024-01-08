@@ -28,8 +28,8 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<String> login(
-            @RequestBody LoginDTO loginDTO) {
-        String token = userService.login(loginDTO.getEmail(), loginDTO.getPassword());
+            @RequestBody LoginDTO loginDTO) throws Exception {
+        String token = userService.login(loginDTO);
         // Trả về token trong response
         return ResponseEntity.ok(token);
     }

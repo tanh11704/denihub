@@ -35,8 +35,8 @@ public class Order extends BaseEntity {
 
     private String status;
 
-    @Column(precision = 10, scale = 2)
-    private BigDecimal total;
+    @Column(precision = 10)
+    private Double total;
 
     @JsonBackReference(value = "user_id")
     @ManyToOne
