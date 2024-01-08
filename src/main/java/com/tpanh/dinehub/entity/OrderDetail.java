@@ -17,11 +17,11 @@ public class OrderDetail extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "food_id", nullable = false)
     private Food food;
 
@@ -29,6 +29,6 @@ public class OrderDetail extends BaseEntity {
     private Integer quantity;
 
     @Column(name = "total_money", nullable = false, precision = 10)
-    private BigDecimal totalMoney;
+    private Double totalMoney;
 
 }

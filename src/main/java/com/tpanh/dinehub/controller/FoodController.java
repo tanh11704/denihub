@@ -65,7 +65,7 @@ public class FoodController {
 //    @PostMapping("/generateFakeFood")
     private ResponseEntity<String> generateFakeFood() {
         Faker faker = new Faker();
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 50; i++) {
             FoodDTO foodDTO = new FoodDTO()
                     .builder()
                     .name(faker.food().dish())
@@ -73,8 +73,8 @@ public class FoodController {
                     .description(faker.lorem().sentence())
                     .calories(faker.number().numberBetween(50, 500))
                     .weight(faker.number().numberBetween(50, 500))
-                    .foodType(faker.options().option("", "new", "Hot", "Recommended"))
-                    .categoryId(faker.number().numberBetween(1, 10))
+                    .foodType(faker.options().option("", "new", "hot", "recommend"))
+                    .categoryId(faker.number().numberBetween(1, 6))
                     .build();
             foodService.createFood(foodDTO);
         }

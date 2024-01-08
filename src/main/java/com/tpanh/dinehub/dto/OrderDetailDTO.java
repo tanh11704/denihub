@@ -20,6 +20,6 @@ public class OrderDetailDTO {
     private Integer quantity;
 
     @JsonProperty("total_money")
-    private Float totalMoney;
+    private Double totalMoney;
 
 }
