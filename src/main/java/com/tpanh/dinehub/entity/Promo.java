@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "promos")
-@JsonPropertyOrder({"id", "code", "endDate", "percent", "created_at", "updated_at"})
+@JsonPropertyOrder({"id", "code", "endDate", "percent", "updatedAt", "createdAt"})
 public class Promo extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

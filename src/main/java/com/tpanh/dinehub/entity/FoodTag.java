@@ -1,10 +1,7 @@
 package com.tpanh.dinehub.entity;
 
-import com.tpanh.dinehub.entity.key.KeyFoodTag;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.time.Instant;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,15 +10,16 @@ import java.time.Instant;
 @Entity
 @Table(name = "food_tags")
 public class FoodTag extends BaseEntity {
-    @EmbeddedId
-    private KeyFoodTag id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "food_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "food_id", nullable = false)
     private Food food;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tag_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "tag_id", nullable = false)
     private Tag tag;
 
 }

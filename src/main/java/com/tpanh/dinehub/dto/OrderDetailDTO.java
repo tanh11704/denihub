@@ -10,9 +10,16 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDetailDTO {
+
     @JsonProperty("order_id")
     private Integer orderId;
 
     @JsonProperty("food_id")
     private Integer foodId;
+
+    private Integer quantity;
+
+    @JsonProperty("total_money")
+    private Float totalMoney;
+
 }

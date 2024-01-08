@@ -6,8 +6,9 @@ spring:
     password:
     jpa:
       hibernate:
-        ddl-auto: update
+        ddl-auto: create
       show-sql: true
+      generate-ddl: true
       properties:
         hibernate:
           dialect: org.hibernate.dialect.MySQL5InnoDBDialect

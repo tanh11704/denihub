@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "tags")
-@JsonPropertyOrder({"id", "name", "created_at", "updated_at"})
+@JsonPropertyOrder({"id", "name", "updated_at", "created_at"})
 public class Tag extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

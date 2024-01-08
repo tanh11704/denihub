@@ -23,9 +23,10 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(name = "full_name", nullable = false)
     private String fullname;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", unique = true)
     private Integer phoneNumber;
 
     private String avatar;

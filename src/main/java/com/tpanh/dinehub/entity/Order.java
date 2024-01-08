@@ -16,13 +16,13 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "orders")
-@JsonPropertyOrder({"id", "user_id", "fullname", "phoneNumber", "address", "note", "total", "status", "created_at", "updated_at"})
+@JsonPropertyOrder({"id", "user_id", "full_name", "phone_number", "address", "note", "total", "status", "updated_at" , "created_at"})
 public class Order extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column(name = "full_name", nullable = false)
     private String fullname;
 
     @Column(name = "phone_number", nullable = false, length = 10)
@@ -39,7 +39,7 @@ public class Order extends BaseEntity {
     private BigDecimal total;
 
     @JsonBackReference(value = "user_id")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
