@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     IUserService userService;
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<?> createUser(@RequestBody UserDTO user) throws Exception {
         if(!user.getPassword().equals(user.getPasswordConfirm())){
             return ResponseEntity.badRequest().body("Password does not match");

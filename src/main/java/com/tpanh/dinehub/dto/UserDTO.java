@@ -19,6 +19,8 @@ public class UserDTO {
     private Integer phoneNumber;
 
     private String password;
+
+    @JsonProperty("password_confirm")
     private String passwordConfirm;
 
     private String fullname;

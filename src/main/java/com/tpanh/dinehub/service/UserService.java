@@ -50,6 +50,7 @@ public class UserService implements IUserService {
                 .email(userDTO.getEmail())
                 .fullname(userDTO.getFullname())
                 .password(userDTO.getPassword())
+                .isDelete(false)
                 .build();
 
         Set<Role> roles = new HashSet<>();
